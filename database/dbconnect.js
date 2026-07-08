@@ -2,7 +2,7 @@
 import mongoose from "mongoose";
 import { configDotenv } from "dotenv";
 configDotenv();
-const db = process.env.DBURL;
+const db = process.env.ATLASURL;
 console.log(db);
 const pqr = mongoose.connect(db).then(()=>{
     console.log("database connected");
