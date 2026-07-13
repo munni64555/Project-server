@@ -13,7 +13,7 @@ const myport=process.env.PORT || 9000
 app.use(express.json());
 app.use(cors());
 app.use(web);
-app.use(cookieParser);
+app.use(cookieParser());
 
 app.listen(myport,()=>{
     console.log(`server is running:${myport}`);
