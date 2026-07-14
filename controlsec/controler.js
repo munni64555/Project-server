@@ -68,21 +68,21 @@ export const logincontrol = async (req, res) => {
         }
         const passwordcomp = await bcrypt.compareSync(Password, userdata.Password)
         if (Email == userdata.Email && passwordcomp) {
-            const mytoken = jwt.sign({FullName:"afrida"},"jksdhfjafgbjhf",{expiresIn:"1h"});
+            const mytoken = jwt.sign({FullName:"muskan"},"hello",{expiresIn:"1h"});
             res.cookie("token", mytoken,{
                 httpOnly:true,
-                secure:false,
-                sameSite:"lax",
+                secure:true,
+                sameSite:"none",
                 max:60*60*1000
             })
-            res.status(200).json({ msg: "wellcome to dashbord", status: 251, userinfo: userdata.Email, token:mytoken});
+            res.status(200).json({ msg: "welcome to dashbord", status: 251, userinfo: userdata.Email, token:mytoken});
         }
         else {
             res.status(200).json({ msg: "email and password worng", status: 240 });
         }
     }
 }
- */
+ */ 
 export const logincontrol = async (req, res) => {
     try {
         const { Email, Password } = req.body;
@@ -135,9 +135,9 @@ export const logincontrol = async (req, res) => {
         );
 
         res.cookie("token", token, {
-            httpOnly: true,
-            secure: false,
-            sameSite: "lax",
+           httpOnly:true,
+                secure:true,
+                sameSite:"none",
             maxAge: 60 * 60 * 1000
         });
 
@@ -158,7 +158,7 @@ export const logincontrol = async (req, res) => {
             status: 500
         });
     }
-};
+}; 
 
 export const singleusercontrol = async (req, res) => {
     const { Email } = req.body;
